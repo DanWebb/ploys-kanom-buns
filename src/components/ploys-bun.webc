@@ -114,12 +114,12 @@
 <script>
   class PloysBun extends HTMLElement {
     variantIds = {
-      'chilli-pork': 10103424155989,
-      'pork-salad': 10103424450901,
-      'taro': 10103424713045,
-      'pandan': 10103425040725,
-      'red-bean': 10103426613589,
-      'coconut': 10103425335637,
+      'chilli-pork': 51325042852181,
+      'pork-salad': 51325043605845,
+      'taro': 51325043999061,
+      'pandan': 51325044752725,
+      'red-bean': 51325045899605,
+      'coconut': 51325045440853,
     };
 
     constructor() {
