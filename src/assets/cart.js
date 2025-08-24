@@ -1,5 +1,5 @@
 /**
- * Shopping Cart with Local Storage and Observable Pattern
+ * Shopping Cart with Session Storage and Observable Pattern
  * Supports Shopify checkout integration
  */
 class ShoppingCart {
@@ -10,12 +10,12 @@ class ShoppingCart {
   }
 
   /**
-   * Load cart data from localStorage
+   * Load cart data from sessionStorage
    * @returns {Object} Cart items object
    */
   loadFromStorage() {
     try {
-      const stored = localStorage.getItem(this.storageKey);
+      const stored = sessionStorage.getItem(this.storageKey);
       return stored ? JSON.parse(stored) : {};
     } catch (error) {
       console.error('Error loading cart from storage:', error);
@@ -24,11 +24,11 @@ class ShoppingCart {
   }
 
   /**
-   * Save cart data to localStorage
+   * Save cart data to sessionStorage
    */
   saveToStorage() {
     try {
-      localStorage.setItem(this.storageKey, JSON.stringify(this.items));
+      sessionStorage.setItem(this.storageKey, JSON.stringify(this.items));
     } catch (error) {
       console.error('Error saving cart to storage:', error);
     }
