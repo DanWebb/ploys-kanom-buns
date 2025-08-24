@@ -1,0 +1,153 @@
+/*
+ * Grid
+ */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-s-l);
+}
+
+.grid-half {
+  @media (width >= 600px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/*
+ * Flex
+ */
+
+.flex {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-s-l);
+}
+
+.flex-align-center {
+  align-items: center;
+}
+
+.flex-gap-xs-s {
+  gap: var(--space-xs-s);
+}
+
+/*
+ * Image
+ */
+
+.image-inline {
+  height: 1em;
+  width: auto;
+}
+
+.image-rounded {
+  border-radius: 50%;
+}
+
+.image-square {
+  aspect-ratio: 1;
+}
+
+/*
+ * List
+ */
+
+.list-style-none {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * Section
+ */
+
+.section {
+  padding-block: var(--space-xl-2xl);
+}
+
+.section-small {
+  padding-block: var(--space-l-xl);
+}
+
+.section-xsmall {
+  padding-block: var(--space-xs);
+}
+
+.section-title {
+  margin-block: 0;
+
+  & + p {
+    margin-block-start: var(--space-3xs);
+  }
+}
+
+/* Remove top padding from stacked sections */
+:is(.section, .section-small) + :is(.section, .section-small) {
+  padding-block-start: 0;
+}
+
+/*
+ * Space
+ */
+
+.space-none {
+  margin: 0;
+}
+
+.space-bottom-s-m {
+  margin-block-end: var(--space-s-m);
+}
+
+.space-top-l-xl {
+  margin-block-start: var(--space-l-xl);
+}
+
+/*
+ * Wrap
+ */
+
+.wrap {
+  max-width: min(var(--wrap-max-width), 100% - var(--wrap-padding) * 2);
+  margin-inline: auto;
+  padding-inline: var(--wrap-padding);
+}
+
+.wrap-sm {
+  max-width: var(--wrap-max-width-sm);
+}
+
+/*
+ * Text
+ */
+
+.text-align-center {
+  text-align: center;
+}
+
+.text-color-muted {
+  color: var(--color-muted);
+}
+
+.text-size-1 {
+  font-size: var(--font-size-1);
+}
+
+.text-size-3 {
+  font-size: var(--font-size-3);
+}
+
+/* Hidden */
+
+.hidden-on-mobile {
+  @media (width < 600px) {
+    display: none;
+  }
+}
+
+/* Card */
+
+.card {
+  border: var(--border);
+  padding: var(--space-s-m);
+}

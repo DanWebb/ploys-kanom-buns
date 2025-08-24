@@ -1,0 +1,268 @@
+<style webc:scoped>
+  :host {
+    border: var(--border);
+    text-align: left;
+    display: flex;
+    margin-block-end: var(--space-xs-s);
+  }
+
+  h3, p {
+    margin: 0;
+  }
+
+  h3 {
+    font-size: var(--font-size-1);
+  }
+
+  .bun-image {
+    border-inline-end: var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-xs-s);
+  }
+
+  .bun-image img {
+    display: block;
+    width: clamp(4.5rem, 10vi, 6.5rem);
+    height: auto;
+  }
+
+  .bun-image--chilli-pork {
+    background: var(--color-chilli-pork);
+  }
+
+  .bun-image--pork-salad {
+    background: var(--color-pork-salad);
+  }
+
+  .bun-image--taro {
+    background: var(--color-taro);
+  }
+
+  .bun-image--pandan {
+    background: var(--color-pandan);
+  }
+
+  .bun-image--red-bean {
+    background: var(--color-red-bean);
+  }
+
+  .bun-image--coconut {
+    background: var(--color-coconut);
+  }
+
+  .bun-details {
+    flex: 1 1 auto;
+    padding-block-start: var(--space-xs-s);
+    padding-inline-start: var(--space-xs-s);
+    /* flex to push the price to the bottom */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bun-details-slot {
+    padding-inline-end: var(--space-xs-s);
+    padding-block-end: var(--space-2xs);
+  }
+
+  .bun-details-price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-block-start: auto;
+  }
+
+  .bun-details-price div {
+    font-weight: var(--font-weight-bold);
+  }
+
+  button {
+    border: 0 none;
+    border-inline-start: var(--border);
+    border-block-start: var(--border);
+    font-size: var(--font-size--1);
+  }
+
+  .quantity-selector {
+    display: flex;
+    align-items: center;
+  }
+
+  .quantity-btn {
+    min-width: 2.5em;
+    line-height: 1;
+    text-decoration: none;
+    padding: var(--space-xs-s) var(--space-xs);
+  }
+
+  .quantity-btn:first-child {
+    border-inline-end: var(--border);
+  }
+
+  .quantity-display {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size--1);
+    padding: var(--space-xs-s) var(--space-xs);
+    border-block-start: var(--border);
+    min-width: 3.5em;
+    text-align: center;
+    line-height: 1;
+  }
+</style>
+
+<script>
+  class PloysBun extends HTMLElement {
+    variantIds = {
+      'chilli-pork': 10103424155989,
+      'pork-salad': 10103424450901,
+      'taro': 10103424713045,
+      'pandan': 10103425040725,
+      'red-bean': 10103426613589,
+      'coconut': 10103425335637,
+    };
+
+    constructor() {
+      super();
+      this.price = 2.50;
+      this.quantity = 0;
+      this.cartObserver = this.handleCartUpdate.bind(this);
+    }
+
+    connectedCallback() {
+      this.type = this.getAttribute('type');
+      this.variantId = this.variantIds[this.type];
+      
+      if (!this.variantId) {
+        console.error(`Unknown bun type: ${this.type}`);
+        return;
+      }
+
+      // Wait for cart to be available and get initial quantity
+      this.initializeCart();
+      this.setupEventListeners();
+    }
+
+    initializeCart() {
+      if (window.Cart) {
+        // Subscribe to cart updates
+        window.Cart.subscribe(this.cartObserver);
+        // Get initial quantity from cart
+        this.quantity = window.Cart.getQuantity(this.variantId);
+        this.updateButton(false);
+      } else {
+        // If cart isn't ready yet, try again in a short while
+        setTimeout(() => this.initializeCart(), 10);
+      }
+    }
+
+    disconnectedCallback() {
+      // Unsubscribe from cart updates
+      if (window.Cart) {
+        window.Cart.unsubscribe(this.cartObserver);
+      }
+    }
+
+    setupEventListeners() {
+      this.addEventListener('click', this.handleClick.bind(this));
+    }
+
+    handleClick(event) {
+      if (event.target.matches('[data-action="add"]')) {
+        this.addToCart();
+      } else if (event.target.matches('[data-action="increment"]')) {
+        this.incrementQuantity();
+      } else if (event.target.matches('[data-action="decrement"]')) {
+        this.decrementQuantity();
+      }
+    }
+
+    addToCart() {
+      if (window.Cart) {
+        this.quantity = window.Cart.add(this.variantId, this.price);
+        this.updateButton();
+      }
+    }
+
+    incrementQuantity() {
+      if (window.Cart) {
+        this.quantity = window.Cart.add(this.variantId, this.price);
+        this.updateButton();
+      }
+    }
+
+    decrementQuantity() {
+      if (window.Cart) {
+        this.quantity = window.Cart.remove(this.variantId);
+        this.updateButton();
+      }
+    }
+
+    handleCartUpdate(cartData) {
+      // Update quantity when cart changes from other sources
+      const newQuantity = cartData.items[this.variantId]?.quantity || 0;
+      if (newQuantity !== this.quantity) {
+        this.quantity = newQuantity;
+        this.updateButton();
+      }
+    }
+
+    updateButton(forceFocus = true) {
+      const buttonContainer = this.querySelector('.bun-details-price');
+
+      if (!buttonContainer) {
+        return;
+      }
+
+      if (this.quantity === 0) {
+        // Show "Add to box" button
+        buttonContainer.innerHTML = `
+          <div>£${this.price.toFixed(2)}</div>
+          <button type="button" data-action="add" aria-label="Add 1 ${this.type} bun to your box">
+            Add to box
+          </button>
+        `;
+        if (forceFocus) {
+          this.querySelector('[data-action="add"]').focus();
+        }
+      } else if (!this.querySelector('.quantity-selector')) {
+        // Show quantity selector
+        buttonContainer.innerHTML = `
+          <div>£${this.price.toFixed(2)}</div>
+          <div class="quantity-selector">
+            <button type="button" data-action="decrement" class="quantity-btn" aria-label="Remove 1 ${this.type} bun to your box">–</button>
+            <output class="quantity-display">${this.quantity}</output>
+            <button type="button" data-action="increment" class="quantity-btn" aria-label="Add another 1 ${this.type} bun to your box">+</button>
+          </div>
+        `;
+        if (forceFocus) {
+          this.querySelector('[data-action="increment"]').focus();
+        }
+      } else {
+        this.querySelector('.quantity-display').innerHTML = this.quantity;
+      }
+    }
+  }
+
+  customElements.define('ploys-bun', PloysBun);
+</script>
+
+<div :class="`bun-image bun-image--${type}`">
+  <img
+    :src="`/assets/buns/${type}.webp`"
+    alt=""
+    width="100"
+    height="100"
+  />
+</div>
+<div class="bun-details">
+  <div class="bun-details-slot">
+    <slot></slot>
+  </div>
+  <div class="bun-details-price">
+    <div>£2.50</div>
+    <button type="button">
+      Add to box
+    </button>
+  </div>
+</div>

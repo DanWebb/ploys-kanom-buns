@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Ploy’s Kanom Buns</title>
+    <meta name="description" content="Homemade Thai sweet buns, delivered anywhere in the UK.">
+
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/favicon/site.webmanifest" />
+
+    <!--- Bundled base styles --->
+    <link rel="stylesheet" href="../styles/reset.css" webc:bucket="styles">
+    <link rel="stylesheet" href="../styles/variables.css" webc:bucket="styles">
+    <link rel="stylesheet" href="../styles/base.css" webc:bucket="styles">
+    <link rel="stylesheet" href="../styles/utility.css" webc:bucket="styles">
+    <link rel="stylesheet" href="../styles/button.css" webc:bucket="styles">
+    <link rel="stylesheet" :href="getBundleFileUrl('css', 'styles')" webc:keep>
+    
+    <!--- Bundled component styles --->
+    <link rel="stylesheet" :href="getBundleFileUrl('css')" webc:keep>
+
+    <script type="module" src="/assets/cart.js" webc:keep></script>
+	</head>
+	<body>
+		<ploys-header></ploys-header>
+    <main @raw="content"></main>
+    <ploys-footer></ploys-footer>
+    <script :src="getBundleFileUrl('js')" webc:keep></script>
+	</body>
+</html>

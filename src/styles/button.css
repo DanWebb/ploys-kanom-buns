@@ -1,0 +1,27 @@
+button,
+.button {
+  appearance: none;
+  background: transparent;
+  border: var(--border);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: var(--border-width);
+  text-transform: uppercase;
+  text-decoration-thickness: var(--border-width);
+  padding: var(--space-xs-s);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-0);
+}
+
+button:focus-visible,
+.button:focus-visible {
+  outline-offset: calc(var(--border-width) * 2);
+  outline-width: var(--border-width);
+  outline-style: solid;
+  outline-color: var(--border-color);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

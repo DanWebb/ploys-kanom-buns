@@ -1,0 +1,44 @@
+---
+layout: default.webc
+---
+
+<ploys-hero></ploys-hero>
+
+<section class="section wrap wrap-sm">
+  <div class="space-bottom-s-m text-align-center">
+    <h2 class="section-title">Choose your flavours</h2>
+    <p>Every bun is made fresh to order with limited stock each week.</p>
+  </div>
+
+  <ploys-bun type="chilli-pork">
+    <h3>Chilli Pork</h3>
+    <p>Mild Thai chilli paste with fluffy pork floss</p>
+  </ploys-bun>
+
+  <ploys-bun type="pork-salad">
+    <h3>Pork salad</h3>
+    <p>Fluffy pork floss with a tangy sweet–sour dressing</p>
+  </ploys-bun>
+
+  <ploys-bun type="taro">
+    <h3>Taro</h3>
+    <p>Smooth, earthy taro paste with a savoury twist</p>
+  </ploys-bun>
+
+  <ploys-bun type="pandan">
+    <h3>Pandan</h3>
+    <p>Silky Pandan custard with fragrant sweetness</p>
+  </ploys-bun>
+
+  <ploys-bun type="coconut">
+    <h3>Coconut</h3>
+    <p>Creamy coconut ribbons with a natural sweetness</p>
+  </ploys-bun>
+
+  <ploys-bun type="red-bean">
+    <h3>Red Bean</h3>
+    <p>Delicate red bean paste, topped with toasted sesame</p>
+  </ploys-bun>
+
+  <ploys-checkout></ploys-checkout>
+</section>

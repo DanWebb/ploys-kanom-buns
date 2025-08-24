@@ -1,0 +1,115 @@
+<style webc:scoped>
+  :host {
+    display: block;
+    border: var(--border);
+    padding: var(--space-s-m);
+    margin-block-start: var(--space-m-l);
+  }
+
+  .checkout-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .checkout-quantity {
+    font-size: var(--font-size-1);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .checkout-total {
+    font-size: var(--font-size-1);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .checkout-button {
+    margin-block-start: var(--space-xs-s);
+    background: var(--color-black);
+    color: var(--color-white);
+    padding: var(--space-s-m);
+    width: 100%;
+    text-align: center;
+    display: block;
+  }
+</style>
+
+<script>
+  class PloysCheckout extends HTMLElement {
+    constructor() {
+      super();
+      this.totalQuantity = 0;
+      this.totalPrice = 0;
+      this.cartObserver = this.handleCartUpdate.bind(this);
+    }
+
+    connectedCallback() {
+      // Wait for cart to be available and get initial state
+      this.initializeCart();
+      this.setupEventListeners();
+    }
+
+    disconnectedCallback() {
+      // Unsubscribe from cart updates
+      if (window.Cart) {
+        window.Cart.unsubscribe(this.cartObserver);
+      }
+    }
+
+    initializeCart() {
+      if (window.Cart) {
+        // Subscribe to cart updates
+        window.Cart.subscribe(this.cartObserver);
+        // Get initial cart state
+        this.totalQuantity = window.Cart.getTotalQuantity();
+        this.totalPrice = window.Cart.getTotalPrice();
+        this.updateDisplay();
+      } else {
+        // If cart isn't ready yet, try again in a short while
+        setTimeout(() => this.initializeCart(), 10);
+      }
+    }
+
+    setupEventListeners() {
+      this.addEventListener('click', this.handleClick.bind(this));
+    }
+
+    handleClick(event) {
+      if (event.target.matches('[data-action="checkout"]')) {
+        this.proceedToCheckout();
+      }
+    }
+
+    proceedToCheckout() {
+      if (window.Cart && !window.Cart.isEmpty()) {
+        window.Cart.checkout();
+      }
+    }
+
+    handleCartUpdate(cartData) {
+      // Update display when cart changes
+      this.totalQuantity = cartData.totalQuantity;
+      this.totalPrice = cartData.totalPrice;
+      this.updateDisplay();
+    }
+
+    updateDisplay() {
+      this.innerHTML = `
+        <div class="checkout-summary">
+          <div class="checkout-quantity">
+            ${this.totalQuantity === 0 ? 'No' : this.totalQuantity} bun${this.totalQuantity !== 1 ? 's' : ''} in your box
+          </div>
+          <div class="checkout-total">
+            £${this.totalPrice.toFixed(2)}
+          </div>
+        </div>
+        ${this.totalQuantity === 0 ? '' : `
+          <button type="button" class="checkout-button" data-action="checkout">
+            Proceed to checkout
+          </button>
+        `}
+      `;
+    }
+  }
+
+  customElements.define('ploys-checkout', PloysCheckout);
+</script>

@@ -1,0 +1,59 @@
+---
+layout: default.webc
+---
+
+<div class="wrap wrap-sm">
+  <h1 class="space-top-l-xl text-align-center">Allergen Information</h1>
+
+  <div class="space-top-m-l">
+    <p class="card">
+      <strong>Please note:</strong> All our buns are made fresh to order. If you have any allergies or dietary requirements, please contact us before placing your order.
+    </p>
+    
+    <h2>Common Allergens</h2>
+    <p>All our buns contain the following allergens:</p>
+    <ul>
+      <li>Eggs</li>
+      <li>Gluten (wheat flour)</li>
+      <li>Milk (dairy products)</li>
+    </ul>
+
+    <h2 class="space-bottom-s">Additional Allergens by Flavour</h2>
+    
+    <div class="space-bottom-m">
+      <h3 class="space-bottom-xs">Chilli Pork</h3>
+      <p>Contains: Eggs, Gluten, Milk, <strong>Crustacean</strong>, <strong>Soybean</strong></p>
+    </div>
+
+    <div class="space-bottom-m">
+      <h3 class="space-bottom-xs">Pork Salad</h3>
+      <p>Contains: Eggs, Gluten, Milk</p>
+    </div>
+
+    <div class="space-bottom-m">
+      <h3 class="space-bottom-xs">Taro</h3>
+      <p>Contains: Eggs, Gluten, Milk</p>
+    </div>
+
+    <div class="space-bottom-m">
+      <h3 class="space-bottom-xs">Pandan</h3>
+      <p>Contains: Eggs, Gluten, Milk</p>
+    </div>
+
+    <div class="space-bottom-m">
+      <h3 class="space-bottom-xs">Coconut</h3>
+      <p>Contains: Eggs, Gluten, Milk</p>
+    </div>
+
+    <div class="space-bottom-m">
+      <h3 class="space-bottom-xs">Red Bean</h3>
+      <p>Contains: Eggs, Gluten, Milk, <strong>Sesame</strong></p>
+    </div>
+
+    <div class="space-top-l">
+      <h2 class="space-bottom-s">Important Notice</h2>
+      <p class="space-bottom-xs">Our kitchen handles nuts, seeds, and other common allergens. Cross-contamination may occur.</p>
+      <p>If you have severe allergies or concerns, please contact us directly before ordering to discuss your specific requirements.</p>
+    </div>
+  </div>
+</div>

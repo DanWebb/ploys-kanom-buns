@@ -1,0 +1,62 @@
+<style webc:scoped>
+  :host {
+    border-top: var(--border);
+    margin-block-start: var(--space-l-xl);
+    padding-block: var(--space-m-l);
+  }
+
+  .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-m-l);
+    justify-content: space-between;
+  }
+
+  h2, p {
+    font-weight: var(--font-weight-normal);;
+    font-size: var(--font-size--1);
+    margin-block-end: var(--space-2xs);
+    text-transform: none;
+  }
+
+  .messenger-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    padding: var(--space-2xs);
+    font-size: var(--font-size--1);
+    text-decoration: none;
+  }
+
+  .messenger-icon {
+    width: 1.2em;
+    height: 1.2em;
+    fill: currentColor;
+  }
+
+  .site-links {
+    font-size: var(--font-size--1);
+  }
+</style>
+
+<footer webc:root="override">
+  <div class="wrap wrap-sm">
+    <div>
+      <h2>Talk to Ploy on:</h2>
+      <a href="https://m.me/61578944243143" class="button messenger-button" target="_blank" rel="noopener">
+        <svg class="messenger-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 0C5.374 0 0 4.975 0 11.111c0 3.497 1.745 6.616 4.472 8.652V24l4.086-2.242c1.09.301 2.246.464 3.442.464 6.626 0 12-4.974 12-11.111C24 4.975 18.626 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8.1l3.13 3.26L19.764 8.1l-6.573 6.863z"/>
+        </svg>
+        Facebook Messenger
+      </a>
+      <p>Or email <a href="mailto:ploywebb@gmail.com">ploywebb@gmail.com</a></p>
+    </div>
+    <div class="site-links">
+      <h2>Links</h2>
+      <ul class="site-links list-style-none">
+        <li><a href="https://www.facebook.com/profile.php?id=61578944243143" target="_blank" rel="noopener">Facebook Page</a></li>
+        <li><a href="/allergen-information">Allergen Information</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>

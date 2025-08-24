@@ -1,0 +1,100 @@
+:root {
+  /*
+   * Border
+   */
+  --border-width: 3px;
+  --border-style: solid;
+  --border-color: var(--color-border);
+  --border: var(--border-width) var(--border-style) var(--border-color);
+
+  /*
+   * Color
+   */
+  --color-white: #fff;
+  --color-black: #111;
+
+  --color-chilli-pork: #faa49e;
+  --color-pork-salad: #fedd94;
+  --color-pandan: #dafcb6; 
+  --color-taro: #ecc9fd;
+  --color-red-bean: #fdd0d0;
+  --color-coconut: #fee8cd;
+
+  --color-border: var(--color-black);
+  --color-body: var(--color-black);
+  --color-link: var(--color-black);
+
+  /* 
+   * Space
+   * @link https://utopia.fyi/space/calculator?c=320,16,1.2,1400,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l|s-2xl&g=s,l,xl,12
+   */
+  --space-3xs: clamp(0.25rem, 0.2315rem + 0.0926vw, 0.3125rem);
+  --space-2xs: clamp(0.5rem, 0.463rem + 0.1852vw, 0.625rem);
+  --space-xs: clamp(0.75rem, 0.6944rem + 0.2778vw, 0.9375rem);
+  --space-s: clamp(1rem, 0.9259rem + 0.3704vw, 1.25rem);
+  --space-m: clamp(1.5rem, 1.3889rem + 0.5556vw, 1.875rem);
+  --space-l: clamp(2rem, 1.8519rem + 0.7407vw, 2.5rem);
+  --space-xl: clamp(3rem, 2.7778rem + 1.1111vw, 3.75rem);
+  --space-2xl: clamp(4rem, 3.7037rem + 1.4815vw, 5rem);
+  --space-3xl: clamp(6rem, 5.5556rem + 2.2222vw, 7.5rem);
+  /* One-up pairs */
+  --space-3xs-2xs: clamp(0.25rem, 0.1389rem + 0.5556vw, 0.625rem);
+  --space-2xs-xs: clamp(0.5rem, 0.3704rem + 0.6481vw, 0.9375rem);
+  --space-xs-s: clamp(0.75rem, 0.6019rem + 0.7407vw, 1.25rem);
+  --space-s-m: clamp(1rem, 0.7407rem + 1.2963vw, 1.875rem);
+  --space-m-l: clamp(1.5rem, 1.2037rem + 1.4815vw, 2.5rem);
+  --space-l-xl: clamp(2rem, 1.4815rem + 2.5926vw, 3.75rem);
+  --space-xl-2xl: clamp(3rem, 2.4074rem + 2.963vw, 5rem);
+  --space-2xl-3xl: clamp(4rem, 2.963rem + 5.1852vw, 7.5rem);
+  /* Custom pairs */
+  --space-s-l: clamp(1rem, 0.5556rem + 2.2222vw, 2.5rem);
+  --space-s-2xl: clamp(1rem, -0.1852rem + 5.9259vw, 5rem);
+
+  /*
+   * Transition
+   */
+  --transition-duration: 0.2s;
+  --transition-timing: ease-in-out;
+  --transition: var(--transition-duration) var(--transition-timing);
+
+  /*
+   * Font
+   */
+  --font-family: 'Poppins', -apple-system, system-ui, blinkmacsystemfont, helvetica, arial, sans-serif;
+  --line-height: 1.5;
+  --header-line-height: 1.25;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+  /* Type scale @link https://utopia.fyi/type/calculator?c=320,16,1.2,1400,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+  --font-size--2: clamp(0.6944rem, 0.6632rem + 0.1564vw, 0.8rem);
+  --font-size--1: clamp(0.8333rem, 0.784rem + 0.2469vw, 1rem);
+  --font-size-0: clamp(1rem, 0.9259rem + 0.3704vw, 1.25rem);
+  --font-size-1: clamp(1.2rem, 1.0926rem + 0.537vw, 1.5625rem);
+  --font-size-2: clamp(1.44rem, 1.288rem + 0.7602vw, 1.9531rem);
+  --font-size-3: clamp(1.628rem, 1.4166rem + 1.0569vw, 2.2414rem);
+  --font-size-4: clamp(2.0736rem, 1.7838rem + 1.4491vw, 3.0518rem);
+  --font-size-5: clamp(2.4883rem, 2.0953rem + 1.965vw, 3.8147rem);
+
+  /*
+   * Wrap
+   */
+  --wrap-max-width: 1400px;
+  --wrap-max-width-sm: 800px;
+  --wrap-padding: var(--space-s-2xl);
+
+  /*
+   * Layers for z-index stacking
+   */
+  --layer-1: 0;
+  --layer-2: 1;
+  --layer-3: 2;
+
+  --logo-size: clamp(4.5rem, 11vi, 6.5rem);
+}
+
+@media (prefers-reduced-motion) {
+  :root {
+    --transition-duration: 0s;
+  }
+}

@@ -1,0 +1,33 @@
+<style webc:scoped>
+  :host {
+    background: var(--color-white);
+    border-bottom: var(--border);
+    height: calc((var(--logo-size) + var(--space-xs) * 2) / 2);
+  }
+
+  .logo {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: var(--space-2xs);
+    transform: translateX(-50%);
+    background: var(--color-white);
+    border-radius: 50%;
+    width: var(--logo-size);
+    height: var(--logo-size);
+    /* Avoid the whisk getting cut off */
+    overflow: visible;
+  }
+</style>
+
+<header webc:root="override">
+  <a href="/">
+    <img
+      src="/assets/logo.svg"
+      alt="Ploy’s Kanom Buns Logo"
+      class="logo"
+      width="168"
+      height="168"
+    />
+  </a>
+</header>
