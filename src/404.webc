@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Not found | Ploy’s Kanom Buns</title>
+    <meta name="description" content="Homemade Thai sweet buns, delivered anywhere in the UK.">
+
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/favicon/site.webmanifest" />
+
+    <!--- Bundled base styles --->
+    <link rel="stylesheet" href="./styles/reset.css" webc:bucket="styles">
+    <link rel="stylesheet" href="./styles/variables.css" webc:bucket="styles">
+    <link rel="stylesheet" href="./styles/base.css" webc:bucket="styles">
+    <link rel="stylesheet" href="./styles/utility.css" webc:bucket="styles">
+    <link rel="stylesheet" href="./styles/button.css" webc:bucket="styles">
+    <link rel="stylesheet" :href="getBundleFileUrl('css', 'styles')" webc:keep>
+    
+    <!--- Bundled component styles --->
+    <link rel="stylesheet" :href="getBundleFileUrl('css')" webc:keep>
+
+    <style>
+      main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: var(--space-l-xl) var(--space-m-l);
+        min-height: 60vh;
+        text-align: center;
+        gap: var(--space-s-m);
+      }
+
+      .not-found-content h1 {
+        margin-block-end: var(--space-xs-s);
+        font-size: var(--font-size-3);
+      }
+
+      .not-found-content p {
+        margin-block-end: var(--space-s-m);
+        color: var(--color-muted);
+      }
+    </style>
+	</head>
+	<body>
+    <main class="wrap wrap-sm">
+      <img
+        src="/assets/not-found.svg"
+        alt="A sad Ploy holding an empty bun tray"
+        width="300"
+        height="300"
+      >
+      <div class="not-found-content">
+        <h1>There are no buns here</h1>
+        <p class="space-bottom-s-m">The page you are looking for couldn’t be found.</p>
+        <a href="/" class="button">Take me back to the buns</a>
+      </div>
+    </main>
+    <ploys-footer></ploys-footer>
+    <script :src="getBundleFileUrl('js')" webc:keep></script>
+	</body>
+</html>

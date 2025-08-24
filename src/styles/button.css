@@ -4,6 +4,7 @@ button,
   background: transparent;
   border: var(--border);
   cursor: pointer;
+  display: block;
   text-decoration: underline;
   text-underline-offset: var(--border-width);
   text-transform: uppercase;
