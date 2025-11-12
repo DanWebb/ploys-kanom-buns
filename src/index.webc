@@ -6,8 +6,8 @@ layout: default.webc
 
 <section class="section wrap wrap-sm">
   <div class="space-bottom-s-m text-align-center">
-    <h2 class="section-title">Choose your flavours</h2>
-    <p>Every bun is made fresh to order with limited stock each week.</p>
+    <h2 class="section-title">The kitchen is closed for now</h2>
+    <p>Ploy is taking a well-deserved break</p>
   </div>
 
   <ploys-bun type="chilli-pork">
@@ -40,5 +40,5 @@ layout: default.webc
     <p>Delicate red bean paste, topped with toasted sesame</p>
   </ploys-bun>
 
-  <ploys-checkout></ploys-checkout>
+  <!-- <ploys-checkout></ploys-checkout> -->
 </section>

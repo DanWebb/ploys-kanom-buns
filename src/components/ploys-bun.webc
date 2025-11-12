@@ -218,7 +218,7 @@
         // Show "Add to box" button
         buttonContainer.innerHTML = `
           <div>£${this.price.toFixed(2)}</div>
-          <button type="button" data-action="add" aria-label="Add 1 ${this.type} bun to your box">
+          <button type="button" disabled="disabled" data-action="add" aria-label="Add 1 ${this.type} bun to your box">
             Add to box
           </button>
         `;
@@ -261,7 +261,7 @@
   </div>
   <div class="bun-details-price">
     <div>£2.50</div>
-    <button type="button">
+    <button type="button" disabled="disabled">
       Add to box
     </button>
   </div>
